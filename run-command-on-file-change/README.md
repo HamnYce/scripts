@@ -1,20 +1,49 @@
-# Middleman Ruby Script
+# Run Command on File Change
 
-This simple Ruby script acts as a middleman between a process and the user, allowing you to send and receive input to and from the processm, the awesome part is that it automatically does a hot reload whenever a file is changed.
+This script monitors file changes in the current directory and runs a specified command whenever a file is modified.
 
-I made this ('made' hah, I prompted chatGPT rather) wanting to use visual studio code for flutter development with react natives hot reload functionality.
+## Dependencies
 
-## Prerequisites
+Ensure you have the following gems installed:
 
-- Ruby (version 2.5 or above)
-- Gems: listen, open3
+- `listen`
+- `logger`
 
-## Installation
+You can install them by running:
 
-1. Clone or download this script.
+```sh
+bundle install
+```
 
-2. Place the script inside the root of your flutter project.
+## Usage
 
-3. Run 'ruby middleman.rb'
+To use the script, run the following command:
 
-If there are any bugs please let me know.
+```sh
+ruby middleman.rb "your_command"
+```
+
+Replace `"your_command"` with the command you want to execute when a file changes. For example:
+
+```sh
+ruby middleman.rb "flutter run"
+```
+
+or
+
+```sh
+ruby middleman.rb "ls"
+```
+
+## Example
+
+```sh
+ruby middleman.rb "echo File changed"
+```
+
+This will print "File changed" to the console whenever a file in the current directory is modified.
+
+## Notes
+
+- Ensure you have the necessary permissions to execute the specified command.
+- The script will continue to run and monitor file changes until you manually stop it.

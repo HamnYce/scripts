@@ -1,5 +1,5 @@
-require 'open3'
-require 'listen'
+require "open3"
+require "listen"
 
 def communicate_with_process(command)
   Open3.popen2e(command) do |stdin, stdout_err, wait_thr|
@@ -21,7 +21,6 @@ def communicate_with_process(command)
     listener = Listen.to(Dir.pwd) do |modified, _added, _removed|
       modified.each do |file|
         puts "File modified: #{file}"
-        stdin.puts('r')
       end
     end
 
@@ -43,4 +42,10 @@ def communicate_with_process(command)
 end
 
 # Replace "your_process_command" with the command to run your desired process
-communicate_with_process('your_process_command')
+if ARGV.empty?
+  puts "Please enter a command examples:"
+  puts 'ruby middleman.rb "flutter run"'
+  puts 'bundle exec ruby middleman.rb "ls"'
+end
+
+communicate_with_process(ARGV[0])
