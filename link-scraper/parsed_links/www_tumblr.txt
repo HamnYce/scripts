@@ -1,7 +1,0 @@
-/
-/login
-/register?source=login_register_header_explore_homepage_explore
-https://www.google.com/chrome
-https://www.mozilla.org/firefox
-https://support.apple.com/downloads/safari
-https://www.microsoft.com/windows/microsoft-edge
