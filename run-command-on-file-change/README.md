@@ -1,13 +1,14 @@
 # Run Command on File Change
 
-This script monitors file changes in the current directory and runs a specified command whenever a file is modified.
+This script allows you to run an initial command and then execute a different command whenever a file change is detected in a specified directory.
 
-## Dependencies
+## Prerequisites
 
 Ensure you have the following gems installed:
 
 - `listen`
 - `logger`
+- `optparse`
 
 You can install them by running:
 
@@ -17,33 +18,36 @@ bundle install
 
 ## Usage
 
-To use the script, run the following command:
-
 ```sh
-ruby middleman.rb "your_command"
+./run_command_on_file_change.rb -i INITIAL_COMMAND -c CHANGE_COMMAND -d DIRECTORY
 ```
 
-Replace `"your_command"` with the command you want to execute when a file changes. For example:
+### Arguments
+
+- `-i`, `--initial`: The initial command to run.
+- `-c`, `--change`: The command to run on file change.
+- `-d`, `--directory`: The directory to watch for changes.
+- `-v`, `--verbose`: Enable verbose output.
+
+### Example
 
 ```sh
-ruby middleman.rb "flutter run"
+./run_command_on_file_change.rb -i "echo Initial Command" -c "echo File Changed" -d /path/to/directory
 ```
 
-or
+In this example:
 
-```sh
-ruby middleman.rb "ls"
-```
+- The script will first run `echo Initial Command`.
+- It will then watch the specified directory for any file changes.
+- Upon detecting a file change, it will run `echo File Changed`.
 
-## Example
+## How It Works
 
-```sh
-ruby middleman.rb "echo File changed"
-```
+1. The script parses the command-line arguments to get the initial command, change command, and directory to watch.
+2. It runs the initial command.
+3. It sets up a listener on the specified directory.
+4. When a file change is detected, it runs the change command.
 
-This will print "File changed" to the console whenever a file in the current directory is modified.
+## License
 
-## Notes
-
-- Ensure you have the necessary permissions to execute the specified command.
-- The script will continue to run and monitor file changes until you manually stop it.
+This project is licensed under the MIT License.
