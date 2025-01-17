@@ -1,9 +1,7 @@
-#!/usr/bin/env ruby
-
 require "listen"
 require "optparse"
 
-# Parse command-line arguments
+# Parse command-line options
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: #{$0} [options]"
@@ -25,9 +23,9 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-# Check if all required arguments are provided
+# Check if all required options are provided
 if options[:initial_command].nil? || options[:change_command].nil? || options[:directory].nil?
-  puts "Missing required arguments. Usage: #{$0} -i INITIAL_COMMAND -c CHANGE_COMMAND -d DIRECTORY"
+  puts "Missing required options. Usage: #{$0} -i INITIAL_COMMAND -c CHANGE_COMMAND -d DIRECTORY"
   exit 1
 end
 

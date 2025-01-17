@@ -2,6 +2,11 @@
 
 This script allows you to run an initial command and then execute a different command whenever a file change is detected in a specified directory.
 
+## Requirements
+
+- Ruby
+- Bundler
+
 ## Prerequisites
 
 Ensure you have the following gems installed:
@@ -19,10 +24,10 @@ bundle install
 ## Usage
 
 ```sh
-./run_command_on_file_change.rb -i INITIAL_COMMAND -c CHANGE_COMMAND -d DIRECTORY
+./run_command_on_file_change -i INITIAL_COMMAND -c CHANGE_COMMAND -d DIRECTORY
 ```
 
-### Arguments
+### Options
 
 - `-i`, `--initial`: The initial command to run.
 - `-c`, `--change`: The command to run on file change.
@@ -32,7 +37,7 @@ bundle install
 ### Example
 
 ```sh
-./run_command_on_file_change.rb -i "echo Initial Command" -c "echo File Changed" -d /path/to/directory
+./run_command_on_file_change -i "echo Initial Command" -c "echo File Changed" -d /path/to/directory
 ```
 
 In this example:
@@ -43,7 +48,7 @@ In this example:
 
 ## How It Works
 
-1. The script parses the command-line arguments to get the initial command, change command, and directory to watch.
+1. The script parses the command-line options to get the initial command, change command, and directory to watch.
 2. It runs the initial command.
 3. It sets up a listener on the specified directory.
 4. When a file change is detected, it runs the change command.
